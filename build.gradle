@@ -1,4 +1,4 @@
-task jar(type: Copy) {
+task install(type: Copy) {
     from 'libs/'
     into 'build/libs'
 }
