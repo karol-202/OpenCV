@@ -1,0 +1,4 @@
+task jar(type: Copy) {
+    from 'libs/'
+    into 'build/libs'
+}
