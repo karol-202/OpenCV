@@ -1,8 +1,20 @@
-task install(type: Copy) {
-    from 'libs/'
-    into "$buildDir/libs"
+plugins {
+    id 'java' // For maven plugin to generate install task
+    id 'maven'
 }
 
-task clean(type: Delete) {
-    delete buildDir
+configurations {
+    opencv
 }
+
+artifacts {
+    opencv new File(OPENCV_JAR)
+}
+
+task copyOpenCV(type: Copy) {
+    from OPENCV_JAR
+    into "$buildDir/libs/"
+}
+
+install.configuration = configurations.opencv
+install.dependsOn copyOpenCV
